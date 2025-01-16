@@ -434,35 +434,5 @@
 	});
 
 	
-      function sendEmail(){
-
-	      const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-
-            const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    /*"Authorization": "Bearer YOUR_API_KEY"*/
-                },
-                body: JSON.stringify({
-                    personalizations: [
-                        { to: [{ email: "cspms1969@gmail.com" }] }
-                    ],
-                    from: { email: "your_verified_sender@example.com" },
-                    subject: "New Contact Form Submission",
-                    content: [{ type: "text/plain", value: `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}` }]
-                })
-            });
-
-            if (response.ok) {
-                alert("Email sent successfully.");
-            } else {
-                alert("Failed to send email.");
-            }
-      }
 
 })(jQuery);
